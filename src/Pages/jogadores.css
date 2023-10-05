@@ -1,5 +1,6 @@
 .container2 {
   flex-direction: row;
+  padding: 10px;
 }
 .jogadores {
   display: flex;
