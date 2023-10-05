@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Jogadores() {
+  const [data2, setData2] = useState([]);
   const [data, setData] = useState([]);
+  const [show2, setShow2] = useState(false);
   const [show, setShow] = useState(false);
   const { nome } = useParams();
 
   useEffect(() => {
     apiCartolaFC();
-  }, []);
+  }, [nome]);
 
   function apiCartolaFC() {
     axios
@@ -24,6 +26,18 @@ export default function Jogadores() {
         setData([]);
         setShow(true);
       });
+
+    axios
+      .get(`https://api.cartola.globo.com/clubes`)
+      .then((response) => {
+        const clubesData = response.data;
+        setData2(clubesData[nome]);
+        console.log(clubesData);
+        setShow2(true);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os dados:", error);
+      });
   }
 
   function formatarURL(url) {
@@ -37,13 +51,10 @@ export default function Jogadores() {
 
   return (
     <div>
-        <button onClick={()=>{
-            console.log(data)
-        }}>mostart</button>
+      <h1>{`Jogadores do ${data2.nome}`}</h1>
       {show ? (
         data && data.length > 0 ? (
           <ul>
-            <h1>{data.id_clube}</h1>
             {data.map((jogador) => (
               <div className="video-card" key={jogador.id}>
                 <p>{jogador.nome}</p>

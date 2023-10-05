@@ -1,3 +1,14 @@
-.jo{
-    background-color: red;
+
+
+.fundo-lista{
+    background-color: #fff;
+    border-radius: 5px;
+}
+.container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 500%;
+    border-radius: 5px;
+    
 }

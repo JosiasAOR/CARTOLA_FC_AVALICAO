@@ -17,7 +17,6 @@ export default function Home() {
       .then((response) => {
         const clubesData = response.data;
         setData(clubesData);
-        console.log(Object.values(clubesData));
         setShow(true);
       })
       .catch((error) => {
@@ -26,16 +25,36 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="container">
+      <div>
+
+      <img
+        width={200}
+        className="img-cartola"
+        src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png"
+        alt=""
+      />
+      </div>
+      <div className="fundo-lista">
+
       {show && (
         <ul>
-          {Object.values(data).map((objeto) => (
-            <Link to={`jogadores/${objeto.id}`}>
-              <li key={objeto.id}>{objeto.nome}</li>
-            </Link>
-          ))}
+          {Object.values(data).map((objeto) =>
+            objeto.escudos["30x30"] ===
+            "https://s.glbimg.com/es/sde/f/organizacoes/escudo_default_30x30.png" ? null : (
+              <Link to={`jogadores/${objeto.id}`} key={objeto.id}>
+               
+                <li>{objeto.nome}</li>
+                <img
+                  src={objeto.escudos["30x30"]}
+                  alt={`${objeto.nome} logo`}
+                  />
+              </Link>
+            )
+            )}
         </ul>
       )}
+      </div>
     </div>
   );
 }
