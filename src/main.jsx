@@ -7,7 +7,7 @@ import Jogadores from './pages/jogadores'
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
-  { path: '/jogadores/', element: <Jogadores /> }
+  { path: '/jogadores/:nome', element: <Jogadores /> }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

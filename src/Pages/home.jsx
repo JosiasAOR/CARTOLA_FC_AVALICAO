@@ -1,42 +1,41 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./home.css";
 import { Link } from "react-router-dom";
-import './home.css'
 
-import axios from 'axios';
 export default function Home() {
+  const [data, setData] = useState([]);
+  const [show, setShow] = useState(false);
 
-    const [data, setData] = useState("")
-    const [show, setShow] = useState("")
+  useEffect(() => {
+    apiCartolaFC();
+  }, []);
 
-    useEffect(() => {
-        apiCartolaFC();
-    }, []);
+  function apiCartolaFC() {
+    axios
+      .get(`https://api.cartola.globo.com/clubes`)
+      .then((response) => {
+        const clubesData = response.data;
+        setData(clubesData);
+        console.log(Object.values(clubesData));
+        setShow(true);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os dados:", error);
+      });
+  }
 
-    function apiCartolaFC() {
-
-        axios.get(`https://api.cartola.globo.com/clubes`)
-            .then((response) => {
-                console.log(response.data);
-                setData(response.data);
-                setShow(true);
-            })
-            .catch((error) => {
-                console.error("Erro ao buscar os dados:", error);
-            });
-    }
-
-
-    return (
-        <div>
-             {show ? (
-          <div className="times-grid">
-            <h1>times</h1>
-            {data.nome}
-          </div>
-        ) : (
-          <p className="loading">Carregando...</p>
-        )}
-        </div>
-    )
+  return (
+    <div>
+      {show && (
+        <ul>
+          {Object.values(data).map((objeto) => (
+            <Link to={`jogadores/${objeto.id}`}>
+              <li key={objeto.id}>{objeto.nome}</li>
+            </Link>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
