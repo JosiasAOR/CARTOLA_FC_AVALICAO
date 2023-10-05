@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./jogadores.css";
 
 export default function Jogadores() {
   const [data2, setData2] = useState([]);
@@ -50,28 +51,42 @@ export default function Jogadores() {
   }
 
   return (
-    <div>
-      <h1>{`Jogadores do ${data2.nome}`}</h1>
+    <div className="container2">
+        <div className="div-logo">
+        <img
+          width={250}
+          className="img-cartola"
+          src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png"
+        />
+      </div>
+      <div>
+      </div>
+<div className="show">
+
+        <h1>{`Jogadores do ${data2.nome}`}</h1>
       {show ? (
-        data && data.length > 0 ? (
-          <ul>
+          data && data.length > 0 ? (
+              <ul>
             {data.map((jogador) => (
-              <div className="video-card" key={jogador.id}>
-                <p>{jogador.nome}</p>
-                {jogador.foto ? (
-                  <img src={formatarURL(jogador.foto)} alt={jogador.nome} />
-                ) : (
-                  <p>No photo available</p>
-                )}
+                <div className="jogadores" key={jogador.id}>
+                <div>
+                    {
+                        jogador.foto===null ?(<h4>Sem foto</h4>):(<img className="img" src={formatarURL(jogador.foto)} alt={jogador.nome} />)
+                    }
+                </div>
+                <di>
+                  <h2>{jogador.nome}</h2>
+                </di>
               </div>
             ))}
           </ul>
         ) : (
-          <p>Sem foto de Jogadores</p>
-        )
-      ) : (
-        <p>carregando...</p>
-      )}
+            <p4>Sem foto de Jogadores</p4>
+            )
+            ) : (
+                <p4>carregando...</p4>
+                )}
+                </div>
     </div>
   );
 }

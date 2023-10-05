@@ -31,30 +31,29 @@ export default function Home() {
           width={250}
           className="img-cartola"
           src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png"
-          
         />
       </div>
       <div className="fundo-lista">
         {show && (
           <ul>
-            {Object.values(data).map((objeto) =>
-            
-                <Link className="link" to={`jogadores/${objeto.id}`} key={objeto.id}>
-                  <div className="times">
-                    <img
-                      src={objeto.escudos["60x60"]}
-                      alt={`${objeto.nome} logo`}
-                      width={60}
-                      height={60}
-                    />
-                    <div className="nomes">
-                      <p className="p1">{objeto.nome}</p>
-                      <p className="p2">{objeto.apelido}</p>
-                    </div>
+            {Object.values(data).map((objeto) => (
+              <Link
+                className="link"
+                to={`jogadores/${objeto.id}`}
+                key={objeto.id}
+              >
+                <div className="times">
+                  <img
+                    src={objeto.escudos["60x60"]}
+                    alt={`${objeto.nome} logo`}
+                  />
+                  <div className="nomes">
+                    <p className="p1">{objeto.nome}</p>
+                    <p className="p2">{objeto.apelido}</p>
                   </div>
-                </Link>
-              
-            )}
+                </div>
+              </Link>
+            ))}
           </ul>
         )}
       </div>

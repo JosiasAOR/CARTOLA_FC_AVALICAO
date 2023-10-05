@@ -1,0 +1,32 @@
+.container2 {
+  flex-direction: row;
+}
+.jogadores {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.img {
+  width: 100px;
+}
+h4 {
+  width: 100px;
+}
+h1 {
+  margin-left: 40px;
+}
+.show {
+  background-color: #fff;
+  border-radius: 5px;
+  padding-top: 15px;
+  width: 1200px;
+  min-height: 500px;
+}
+p4{
+  margin-left: 100px;
+  font-size: 22px;
+}
+h2{
+justify-content: center;
+margin-left: 10px;
+}
