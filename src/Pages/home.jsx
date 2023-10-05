@@ -26,34 +26,37 @@ export default function Home() {
 
   return (
     <div className="container">
-      <div>
-
-      <img
-        width={200}
-        className="img-cartola"
-        src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png"
-        alt=""
-      />
+      <div className="div-logo">
+        <img
+          width={250}
+          className="img-cartola"
+          src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png"
+          
+        />
       </div>
       <div className="fundo-lista">
-
-      {show && (
-        <ul>
-          {Object.values(data).map((objeto) =>
-            objeto.escudos["30x30"] ===
-            "https://s.glbimg.com/es/sde/f/organizacoes/escudo_default_30x30.png" ? null : (
-              <Link to={`jogadores/${objeto.id}`} key={objeto.id}>
-               
-                <li>{objeto.nome}</li>
-                <img
-                  src={objeto.escudos["30x30"]}
-                  alt={`${objeto.nome} logo`}
-                  />
-              </Link>
-            )
+        {show && (
+          <ul>
+            {Object.values(data).map((objeto) =>
+            
+                <Link className="link" to={`jogadores/${objeto.id}`} key={objeto.id}>
+                  <div className="times">
+                    <img
+                      src={objeto.escudos["60x60"]}
+                      alt={`${objeto.nome} logo`}
+                      width={60}
+                      height={60}
+                    />
+                    <div className="nomes">
+                      <p className="p1">{objeto.nome}</p>
+                      <p className="p2">{objeto.apelido}</p>
+                    </div>
+                  </div>
+                </Link>
+              
             )}
-        </ul>
-      )}
+          </ul>
+        )}
       </div>
     </div>
   );

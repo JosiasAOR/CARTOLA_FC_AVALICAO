@@ -1,14 +1,49 @@
-
-
-.fundo-lista{
+.fundo-lista {
     background-color: #fff;
     border-radius: 5px;
+    padding-top: 15px;
 }
-.container{
+
+.link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+}
+
+.nomes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100px;
+}
+.img-cartola{
+    border-radius: 5px;
+}
+.p1 {
+    font-size: 20px;
+    margin-bottom: 5px; /* Adicione um espaço entre p1 e p2 ajustando o valor conforme necessário */
+}
+
+.p2 {
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 500%;
     border-radius: 5px;
-    
+    width: 1000px;
+}
+
+.times {
+    flex-direction: row;
+    display: flex;
+    margin: 2px;
+    align-items: center;
 }
